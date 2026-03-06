@@ -29,3 +29,12 @@
 ## 🛠️ 運行守則
 - 始終保持 **Claude Opus 4.6 + Max Effort**。
 - 若 `claude_admin` 窗口消失或報錯，立即向 GitHub 發送警告。
+
+## 🧹 自动化资源治理 (Memory Janitor)
+- **触发条件**：当任一 Agent (Critic/Conductor/Researcher) 报告 Context 剩余 < 5% 时。
+- **清理序列**：
+  1. 向该窗口发送指令：`正在执行自动内存清理，请稍候...`
+  2. 发送 `/clear`。
+  3. 间隔 5 秒后，发送 `cat ~/path/to/YOUR_ROLE.md` 以重新加载宪法。
+  4. 发送 `cat ~/projects/GiT/MASTER_PLAN.md` 以同步最新实验进度。
+- **自清理**：若监督员自身 Context < 5%，在执行完其他人的清理后，发送消息给 CEO 并自我重启。
